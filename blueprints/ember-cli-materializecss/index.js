@@ -3,7 +3,7 @@ module.exports = {
 
   afterInstall: function() {
     return this.addBowerPackagesToProject ([
-      {name: 'materialize', target: '~0.99.0'}
+      {name: 'materialize', target: '0.99.0'}
     ]);
   }
 };
