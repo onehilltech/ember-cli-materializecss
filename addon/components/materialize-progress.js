@@ -13,7 +13,7 @@ export default Ember.Component.extend({
   didUpdateAttrs (attrs) {
     this._super (...arguments);
 
-    if (this.get ('style') === 'determinate') {
+    if (this.get ('mode') === 'determinate') {
       if (Ember.isPresent (attrs.newAttrs.progress)) {
         Ember.run ('afterRender', () => {
           let progress = attrs.newAttrs.progress.value * 100;
