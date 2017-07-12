@@ -58,7 +58,6 @@ const Loading = LoadingState.extend ({
  * Base class for all Materialize buttons.
  */
 export default Ember.Component.extend({
-  layout,
   tagName: 'a',
   attributeBindings: ['disabled', 'loading'],
   disabled: false,
