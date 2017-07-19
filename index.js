@@ -22,6 +22,12 @@ module.exports = {
     app.import (app.bowerDirectory + '/materialize/fonts/roboto/Roboto-Regular.woff2', {destDir: 'fonts/roboto'});
     app.import (app.bowerDirectory + '/materialize/fonts/roboto/Roboto-Thin.woff', {destDir: 'fonts/roboto'});
     app.import (app.bowerDirectory + '/materialize/fonts/roboto/Roboto-Thin.woff2', {destDir: 'fonts/roboto'});
+  },
+
+  contentFor (type, config) {
+    if (type === 'head-footer') {
+      return '<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />';
+    }
   }
 };
 
