@@ -8,16 +8,6 @@ module.exports = {
     this._super.included.apply (this, arguments);
 
     // assets
-    app.import({
-      development: app.bowerDirectory + '/materialize/dist/js/materialize.js',
-      production:  app.bowerDirectory + '/materialize/dist/js/materialize.min.js'
-    });
-
-    app.import({
-      development: app.bowerDirectory + '/materialize/dist/css/materialize.css',
-      production:  app.bowerDirectory + '/materialize/dist/css/materialize.min.css'
-    });
-
     app.import (app.bowerDirectory + '/materialize/dist/js/materialize.min.js');
     app.import (app.bowerDirectory + '/materialize/dist/css/materialize.min.css');
 
