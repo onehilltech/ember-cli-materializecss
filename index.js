@@ -37,7 +37,10 @@ module.exports = {
   },
 
   contentFor (type, config) {
-    if (type === 'head-footer' && !!config.APP.materialize.embedIconFont) {
+    let materialize = config.APP.materialize;
+    let embedFonts = materialize && materialize.embedIconFont
+
+    if (type === 'head-footer' && !embedFonts) {
       return '<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />';
     }
   }
