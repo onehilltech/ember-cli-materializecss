@@ -3,7 +3,8 @@ module.exports = {
 
   afterInstall: function() {
     return this.addBowerPackagesToProject ([
-      {name: 'materialize', target: '0.99.0'}
+      {name: 'materialize', target: '^0.99.0'},
+      {name: 'material-design-icons', target: '^3.0.1'}
     ]).then (() => {
       return this.addAddonsToProject({
         packages: [

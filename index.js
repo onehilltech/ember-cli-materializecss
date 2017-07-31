@@ -4,12 +4,19 @@
 module.exports = {
   name: 'ember-cli-materializecss',
 
-  included: function(app) {
+  included: function (app) {
     this._super.included.apply (this, arguments);
 
     // assets
-    app.import (app.bowerDirectory + '/materialize/dist/js/materialize.min.js');
-    app.import (app.bowerDirectory + '/materialize/dist/css/materialize.min.css');
+    app.import ({
+      development: app.bowerDirectory + '/materialize/dist/js/materialize.js',
+      production:  app.bowerDirectory + '/materialize/dist/js/materialize.min.js'
+    });
+
+    app.import ({
+      development: app.bowerDirectory + '/materialize/dist/css/materialize.css',
+      production:  app.bowerDirectory + '/materialize/dist/css/materialize.min.css'
+    });
 
     // fonts
     app.import (app.bowerDirectory + '/materialize/fonts/roboto/Roboto-Bold.woff', {destDir: 'fonts/roboto'});
@@ -22,10 +29,15 @@ module.exports = {
     app.import (app.bowerDirectory + '/materialize/fonts/roboto/Roboto-Regular.woff2', {destDir: 'fonts/roboto'});
     app.import (app.bowerDirectory + '/materialize/fonts/roboto/Roboto-Thin.woff', {destDir: 'fonts/roboto'});
     app.import (app.bowerDirectory + '/materialize/fonts/roboto/Roboto-Thin.woff2', {destDir: 'fonts/roboto'});
+
+    app.import (app.bowerDirectory + '/material-design-icons/iconfont/MaterialIcons-Regular.eot', {destDir: 'fonts/material-design-icons'});
+    app.import (app.bowerDirectory + '/material-design-icons/iconfont/MaterialIcons-Regular.tff', {destDir: 'fonts/material-design-icons'});
+    app.import (app.bowerDirectory + '/material-design-icons/iconfont/MaterialIcons-Regular.woff', {destDir: 'fonts/material-design-icons'});
+    app.import (app.bowerDirectory + '/material-design-icons/iconfont/MaterialIcons-Regular.woff2', {destDir: 'fonts/material-design-icons'});
   },
 
   contentFor (type, config) {
-    if (type === 'head-footer') {
+    if (type === 'head-footer' && !!config.APP.materialize.embedIconFont) {
       return '<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />';
     }
   }
