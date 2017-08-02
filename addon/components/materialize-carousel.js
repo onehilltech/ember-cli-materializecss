@@ -7,6 +7,7 @@ export default Ember.Component.extend({
 
   didRender (attrs) {
     this._super (...arguments);
+
     if (Ember.isPresent (attrs.newAttrs.fullWidth) || Ember.isPresent (attrs.newAttrs.duration) ||
       Ember.isPresent (attrs.newAttrs.dist) || Ember.isPresent (attrs.newAttrs.shift) ||
       Ember.isPresent (attrs.newAttrs.padding) || Ember.isPresent (attrs.newAttrs.indicators) ||
