@@ -13,11 +13,6 @@ module.exports = {
       production:  app.bowerDirectory + '/materialize/dist/js/materialize.min.js'
     });
 
-    app.import ({
-      development: app.bowerDirectory + '/materialize/dist/css/materialize.css',
-      production:  app.bowerDirectory + '/materialize/dist/css/materialize.min.css'
-    });
-
     // fonts
     app.import (app.bowerDirectory + '/materialize/fonts/roboto/Roboto-Bold.woff', {destDir: 'fonts/roboto'});
     app.import (app.bowerDirectory + '/materialize/fonts/roboto/Roboto-Bold.woff2', {destDir: 'fonts/roboto'});

@@ -19,11 +19,6 @@ module.exports = function(defaults) {
   */
 
   app.import ({
-    development: 'bower_components/materialize/dist/css/materialize.css',
-    production: 'bower_components/materialize/dist/css/materialize.min.css'
-  });
-
-  app.import ({
     development: 'bower_components/materialize/dist/js/materialize.js',
     production: 'bower_components/materialize/dist/js/materialize.min.js'
   });
