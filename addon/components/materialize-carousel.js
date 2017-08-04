@@ -3,11 +3,34 @@ import layout from '../templates/components/materialize-carousel';
 
 export default Ember.Component.extend({
   layout,
+
   classNames: ['carousel'],
 
-  didRender () {
+  classNameBindings: ['isSlider:carousel-slider'],
+
+  isSlider: false,
+
+  didUpdateAttrs () {
     this._super (...arguments);
 
+    if (Ember.isPresent ('fullWidth') ||
+        Ember.isPresent ('durations') ||
+        Ember.isPresent ('dist') ||
+        Ember.isPresent ('shift') ||
+        Ember.isPresent ('padding') ||
+        Ember.isPresent ('indicators') ||
+        Ember.isPresent ('noWrap'))
+    {
+      this._init ();
+    }
+  },
+
+  didInsertElement () {
+    this._super (...arguments);
+    this._init ();
+  },
+
+  _init () {
     let opts = {
       fullWidth: this.get ('fullWidth'),
       duration: this.get ('durations'),
@@ -17,8 +40,8 @@ export default Ember.Component.extend({
       indicators: this.get ('indicators'),
       noWrap: this.get ('noWrap')
     };
-    let $this = this.$ ();
-    $this.carousel (opts);
+
+    this.$ ().carousel (opts);
   }
 });
 
