@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import layout from '../templates/components/materialize-select';
-import initInputLabel from '../utils/init-input-label';
+import initInputLabel from '../-private/init-input-label';
 
 const VALIDATION_ERROR_TYPE = [
   'valueMissing',
