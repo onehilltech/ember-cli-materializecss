@@ -21,9 +21,7 @@ export default Ember.TextArea.extend (TextFieldMixin, {
     this._super (...arguments);
     this._didUpdateAttrs (...arguments);
 
-    if (this.get ('isDirty')) {
-      this.$ ().trigger ('autoresize');
-    }
+    this.$ ().trigger ('autoresize');
   },
 
   didInsertElement () {
