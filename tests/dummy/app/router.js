@@ -11,6 +11,7 @@ Router.map(function() {
     this.route('textareas');
     this.route('input-fields');
     this.route('checkboxes');
+    this.route('select');
   });
 });
 
