@@ -6,7 +6,7 @@ export default Ember.Component.extend({
 
   layout: layout,
 
-  attributeBindings: ['type', 'value'],
+  attributeBindings: ['disabled', 'type', 'value'],
 
   type: 'submit',
 
