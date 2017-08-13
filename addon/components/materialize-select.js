@@ -3,16 +3,6 @@ import layout from '../templates/components/materialize-select';
 import InputFieldMixin from '../-private/mixins/input-field';
 import TextInputFieldMixin from '../-private/mixins/text-input-field';
 
-const VALIDATION_ERROR_TYPE = [
-  'valueMissing',
-  'typeMismatch',
-  'patternMismatch',
-  'rangeOverflow',
-  'rangeUnderflow',
-  'stepMismatch',
-  'tooLong'
-];
-
 export default Ember.Component.extend (InputFieldMixin, TextInputFieldMixin, {
   layout,
 

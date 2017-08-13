@@ -2,6 +2,6 @@
   "name": "ember-cli-materializecss",
   "dependencies": {
     "material-design-icons": "^3.0.1",
-    "materialize": "0.99.0"
+    "materialize": "^0.100.1"
   }
 }
