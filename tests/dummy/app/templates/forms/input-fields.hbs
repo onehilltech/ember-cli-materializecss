@@ -3,17 +3,21 @@
 </div>
 
 <div class="row">
-  <form class="col s12">
+  {{#materialize-form class="col s12" submit=(action "submit")}}
     <div class="row">
       <div class="input-field col s12">
-        {{materialize-textfield label="Login" placeholder="Email address" required=true errorMessage=errorMessage}}
+        {{materialize-textfield type="email" label="Email address" required=true errorMessage=errorMessage value=email}}
       </div>
     </div>
 
     <div class="row">
-      <div class="input-field col s12">
-        {{#materialize-button click=(action "validate")}}Show Custom Error{{/materialize-button}}
+      <div class="input-field col s6">
+        {{#materialize-button click=(action "validate")}}Custom Error{{/materialize-button}}
+      </div>
+
+      <div class="input-field col s6">
+        {{materialize-submit class="btn waves-effect waves-light" value="Submit"}}
       </div>
     </div>
-  </form>
+  {{/materialize-form}}
 </div>

@@ -10,6 +10,7 @@ if (Ember.isPresent (window.validate_field)) {
 export default Ember.Mixin.create ({
   attributeBindings: ['required'],
 
+  classNames: ['material-input'],
   classNameBindings: ['validate'],
 
   label: '',
