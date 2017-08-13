@@ -1,16 +1,14 @@
 import Ember from 'ember';
 import layout from '../templates/components/materialize-textarea';
-import TextFieldMixin from '../-private/mixins/text-field';
+import InputFieldMixin from '../-private/mixins/input-field';
+import TextInputFieldMixin from '../-private/mixins/text-input-field';
 
-export default Ember.TextArea.extend (TextFieldMixin, {
+export default Ember.TextArea.extend (InputFieldMixin, TextInputFieldMixin, {
   layout,
 
   tagName: 'textarea',
 
   classNames: ['materialize-textarea'],
-  classNameBindings: ['validate'],
-
-  validate: true,
 
   init () {
     this._super (...arguments);

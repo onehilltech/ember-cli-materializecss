@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import layout from '../templates/components/materialize-select';
-import initInputLabel from '../-private/init-input-label';
+import InputFieldMixin from '../-private/mixins/input-field';
 
 const VALIDATION_ERROR_TYPE = [
   'valueMissing',
@@ -12,14 +12,12 @@ const VALIDATION_ERROR_TYPE = [
   'tooLong'
 ];
 
-export default Ember.Component.extend({
+export default Ember.Component.extend (InputFieldMixin, {
   layout,
 
   tagName: 'select',
 
   classNames: ['materialize-input'],
-
-  attributeBindings: ['required'],
 
   didUpdateAttrs (attrs) {
     this._super (...arguments);

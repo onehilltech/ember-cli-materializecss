@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('forms', function() {
     this.route('textareas');
     this.route('input-fields');
+    this.route('checkboxes');
   });
 });
 
