@@ -3,11 +3,12 @@ import layout from '../templates/components/materialize-parallax';
 
 export default Ember.Component.extend({
   layout,
-  classNames: 'parallax',
+
+  classNames: ['parallax-container'],
 
   didInsertElement () {
     this._super (...arguments);
 
-    this.$ (this.element).parallax ();
+    this.$ ('.parallax').parallax ();
   }
 });
