@@ -14,7 +14,7 @@ export default Ember.Component.extend (InputFieldMixin, TextInputFieldMixin, {
     return !Ember.isArray (this.get ('options'));
   }),
 
-  didUpdateAttrs () {
+  didUpdate () {
     this._super (...arguments);
 
     this.$ ().material_select ();
