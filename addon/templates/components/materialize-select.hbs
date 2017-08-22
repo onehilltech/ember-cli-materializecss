@@ -1,9 +1,13 @@
+{{#if prompt}}
+  <option value="" disabled selected>{{prompt}}</option>
+{{/if}}
+
 {{#if hasOptionGroups}}
   {{#each-in options as |group groupOptions|}}
     <optgroup label={{group}}>
-    {{#each groupOptions as |groupOption|}}
-      <option value={{groupOption.value}} disabled={{groupOption.disabled}} selected={{groupOption.selected}}>{{groupOption.text}}</option>
-    {{/each}}
+      {{#each groupOptions as |groupOption|}}
+        <option value={{groupOption.value}} disabled={{groupOption.disabled}} selected={{groupOption.selected}}>{{groupOption.text}}</option>
+      {{/each}}
     </optgroup>
   {{/each-in}}
 {{else}}
