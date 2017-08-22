@@ -1,1 +1,13 @@
-{{yield}}
+{{#if hasOptionGroups}}
+  {{#each-in options as |group groupOptions|}}
+    <optgroup label={{group}}>
+    {{#each groupOptions as |groupOption|}}
+      <option value={{groupOption.value}} disabled={{groupOption.disabled}} selected={{groupOption.selected}}>{{groupOption.text}}</option>
+    {{/each}}
+    </optgroup>
+  {{/each-in}}
+{{else}}
+  {{#each options as |option|}}
+    <option value={{option.value}} disabled={{option.disabled}} selected={{option.selected}}>{{option.text}}</option>
+  {{/each}}
+{{/if}}

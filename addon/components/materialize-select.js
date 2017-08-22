@@ -10,22 +10,26 @@ export default Ember.Component.extend (InputFieldMixin, TextInputFieldMixin, {
 
   classNames: ['materialize-input'],
 
-  didUpdateAttrs (attrs) {
+  hasOptionGroups: Ember.computed ('options', function () {
+    return !Ember.isArray (this.get ('options'));
+  }),
+
+  didUpdateAttrs () {
     this._super (...arguments);
 
-    if (Ember.isPresent (attrs.newAttrs.options)) {
-      this.$ ().material_select ();
-    }
+    this.$ ().material_select ();
   },
 
   didInsertElement () {
     this._super (...arguments);
     this._didInsertElement ();
+
     this.$ ().material_select ();
   },
 
   willDestroyElement () {
     this._super (...arguments);
+
     this.$ ().material_select ('destroy');
   },
 
