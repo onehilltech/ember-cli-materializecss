@@ -47,7 +47,7 @@ export default Ember.Mixin.create ({
    * @private
    */
   _addLabel () {
-    let $label = this.$ ().after (`<label for="${this.elementId}">${this.get ('label')}</label>`);
+    let $label = $(`<label for="${this.elementId}">${this.get ('label')}</label>`).insertAfter (this.$());
     let val = this.$().val ();
     let placeholder = this.get ('placeholder');
 
