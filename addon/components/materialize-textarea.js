@@ -17,7 +17,7 @@ export default Ember.TextArea.extend (InputFieldMixin, TextInputFieldMixin, {
 
   didUpdateAttrs () {
     this._super (...arguments);
-    this._didUpdateAttrs (...arguments);
+    this._renderLabel ();
 
     this.$ ().trigger ('autoresize');
   },

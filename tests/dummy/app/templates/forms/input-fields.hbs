@@ -1,5 +1,5 @@
 <div class="container">
-  <h4>Input Fields</h4>
+  <h4>Standard Input Fields</h4>
 </div>
 
 <div class="row">
@@ -23,6 +23,28 @@
 
       <div class="input-field col s6">
         {{materialize-submit class="btn waves-effect waves-light" value="Submit"}}
+      </div>
+    </div>
+  {{/materialize-form}}
+</div>
+
+<div class="divider"></div>
+
+<div class="container">
+  <h4>Dynamic Label</h4>
+</div>
+
+<div class="row">
+  {{#materialize-form class="col s12"}}
+    <div class="row">
+      <div class="input-field col s12">
+        {{materialize-textfield label=label placeholder="Input goes here"}}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        {{materialize-textfield label="Label" placeholder="Dynamic label input" value=label}}
       </div>
     </div>
   {{/materialize-form}}

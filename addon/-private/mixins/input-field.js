@@ -16,6 +16,7 @@ export default Ember.Mixin.create ({
   label: '',
 
   validate: true,
+  autoValidate: true,
 
   isClean: Ember.computed ('value', '_initValue', function () {
     return this.get ('value') === this.get ('_initValue');
@@ -30,41 +31,79 @@ export default Ember.Mixin.create ({
   _didInsertElement () {
     this._super (...arguments);
 
-    // Set the for attribute for the label to this input.
-    this._addLabel ();
     this.$ ().on ('focusout', this._onFocusOut.bind (this));
+    this._renderLabel ();
   },
 
+  /**
+   * The input is no longer in focus. We are to validate the input here, if
+   * we support auto-validation.
+   *
+   * @private
+   */
   _onFocusOut () {
-    if (this.get ('isDirty')) {
+    let isDirty = this.get ('isDirty');
+    let autoValidate = this.get ('autoValidate');
+
+    if (isDirty && autoValidate) {
       this.doValidate ();
     }
   },
 
   /**
-   * Add the label for the input into the DOM model.
+   * Render the label for the input. If no label is present, then the label element
+   * is removed from the DOM tree.
    *
    * @private
    */
-  _addLabel () {
-    let $label = $(`<label for="${this.elementId}">${this.get ('label')}</label>`).insertAfter (this.$());
-    let val = this.$().val ();
-    let placeholder = this.get ('placeholder');
+  _renderLabel () {
+    // Set the for attribute for the label to this input. We need to store the
+    // label just in case it is updated, and we need to update our label.
+    let label = this.get ('label');
+    let $label = this.$().siblings ('label');
 
-    if (Ember.isEmpty (val) && Ember.isEmpty (placeholder)) {
-      // Remove the active class since there is nothing in the input.
-      if ($label.hasClass ('active')) {
-        $label.removeClass ('active');
+    if (Ember.isEmpty (label)) {
+      // We do not have a label. We need to remove the label element.
+      if ($label.length !== 0) {
+        $label.remove ();
       }
     }
     else {
-      // Add the active class since there is something in the input.
-      if (!$label.hasClass ('active')) {
-        $label.addClass ('active');
+      if ($label.length !== 0) {
+        let oldLabel = this.get ('_oldLabel');
+
+        // We already have a label and the label is different from the old
+        // label. So, we just need to update the label text.
+        if (label !== oldLabel) {
+          $label.text (label);
+        }
+      }
+      else {
+        // There is no label element, and we need to add one.
+        $label = $(`<label for="${this.elementId}">${label}</label>`).insertAfter (this.$());
+      }
+
+      // Update the state of the label.
+      let val = this.$().val ();
+      let placeholder = this.get ('placeholder');
+
+      if (Ember.isEmpty (val) && Ember.isEmpty (placeholder)) {
+        // Remove the active class since there is nothing in the input.
+        if ($label.hasClass ('active')) {
+          $label.removeClass ('active');
+        }
+      }
+      else {
+        // Add the active class since there is something in the input.
+        if (!$label.hasClass ('active')) {
+          $label.addClass ('active');
+        }
       }
     }
-  },
 
+    this.set ('_oldLabel', label);
+  },
+  
   _updateValidState () {
     let $this = this.$ ();
 

@@ -14,6 +14,11 @@ export default Ember.Component.extend (InputFieldMixin, TextInputFieldMixin, {
     return !Ember.isArray (this.get ('options'));
   }),
 
+  didUpdateAttrs () {
+    this._super (...arguments);
+    this._renderLabel ();
+  },
+
   didUpdate () {
     this._super (...arguments);
 

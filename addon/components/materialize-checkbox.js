@@ -10,5 +10,10 @@ export default Ember.Checkbox.extend (InputFieldMixin, {
   didInsertElement () {
     this._super (...arguments);
     this._didInsertElement ();
+  },
+
+  didUpdateAttrs () {
+    this._super (...arguments);
+    this._renderLabel ();
   }
 });
