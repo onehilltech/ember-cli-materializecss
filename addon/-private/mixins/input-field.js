@@ -60,7 +60,7 @@ export default Ember.Mixin.create ({
     // Set the for attribute for the label to this input. We need to store the
     // label just in case it is updated, and we need to update our label.
     let label = this.get ('label');
-    let $label = this.$().siblings ('label');
+    let $label = $(this.$()[0].labels);
 
     if (Ember.isEmpty (label)) {
       // We do not have a label. We need to remove the label element.
