@@ -1,13 +1,15 @@
 import Ember from 'ember';
 
 const VALIDATION_ERROR_TYPE = [
-  'valueMissing',
-  'typeMismatch',
+  'badInput',
   'patternMismatch',
   'rangeOverflow',
   'rangeUnderflow',
   'stepMismatch',
-  'tooLong'
+  'tooLong',
+  'tooShort',
+  'valueMissing',
+  'typeMismatch',
 ];
 
 export default Ember.Mixin.create ({
