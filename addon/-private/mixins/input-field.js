@@ -3,9 +3,13 @@ import Ember from 'ember';
 // Default form validation is broken because a single global function cannot
 // keep track of the state of an object. We are going to disable it, but still
 // support HTML validation.
-if (Ember.isPresent (window.validate_field)) {
+if (window.validate_field) {
   window.validate_field = function () { };
 }
+
+let inputSelector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
+
+Ember.$(document).off ('blur', inputSelector);
 
 export default Ember.Mixin.create ({
   attributeBindings: ['required'],
@@ -87,23 +91,13 @@ export default Ember.Mixin.create ({
       let val = this.$().val ();
       let placeholder = this.get ('placeholder');
 
-      if (Ember.isEmpty (val) && Ember.isEmpty (placeholder)) {
-        // Remove the active class since there is nothing in the input.
-        if ($label.hasClass ('active')) {
-          $label.removeClass ('active');
-        }
-      }
-      else {
-        // Add the active class since there is something in the input.
-        if (!$label.hasClass ('active')) {
-          $label.addClass ('active');
-        }
-      }
+      let showActive = !(Ember.isEmpty (val) && Ember.isEmpty (placeholder));
+      $label.toggleClass ('active', showActive);
     }
 
     this.set ('_oldLabel', label);
   },
-  
+
   _updateValidState () {
     let $this = this.$ ();
 

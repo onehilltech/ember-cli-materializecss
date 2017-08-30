@@ -91,12 +91,20 @@ export default Ember.Mixin.create ({
   },
 
   _showErrorMessage (msg) {
-    let $label = this.$ ().siblings ('label');
-    $label.attr ('data-error', msg);
+    this._showMessage ('data-error', msg);
   },
 
   _showSuccessMessage (msg) {
+    this._showMessage ('data-success', msg);
+  },
+
+  _showMessage (kind, msg) {
     let $label = this.$ ().siblings ('label');
-    $label.attr ('data-success', msg);
+    $label.attr (kind, msg);
+
+    // The error message is only visible if the label is marked as active. This does
+    // not make sense in some cases, such as an required field that is empty and does not
+    // have a placeholder. But, we are going to do this just to make things work!
+    $label.toggleClass ('active', !Ember.isEmpty (msg));
   }
 });
