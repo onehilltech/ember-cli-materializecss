@@ -101,24 +101,7 @@ export default Ember.Mixin.create ({
   _updateValidState () {
     let $this = this.$ ();
 
-    if (this.element.validity.valid) {
-      if ($this.hasClass ('invalid')) {
-        $this.removeClass ('invalid');
-      }
-
-      if (!$this.hasClass ('valid')) {
-        $this.addClass ('valid');
-      }
-    }
-    else {
-      // Mark the input as invalid.
-      if ($this.hasClass ('valid')) {
-        $this.removeClass ('valid');
-      }
-
-      if (!$this.hasClass ('invalid')) {
-        $this.addClass ('invalid');
-      }
-    }
+    $this.toggleClass ('invalid', !this.element.validity.valid);
+    $this.toggleClass ('valid', this.element.validity.valid);
   }
 });
