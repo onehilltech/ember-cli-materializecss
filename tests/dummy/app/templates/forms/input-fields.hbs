@@ -6,7 +6,12 @@
   {{#materialize-form class="col s12" submit=(action "submit")}}
     <div class="row">
       <div class="input-field col s12">
-        {{materialize-textfield type="email" label="Login" placeholder="Email address" required=true errorMessage=errorMessage value=email}}
+        {{materialize-textfield type="email" label="Login"
+                                placeholder="Email address"
+                                required=true
+                                errorMessage=errorMessage
+                                value=email
+                                customError=emailCustomError}}
       </div>
     </div>
 

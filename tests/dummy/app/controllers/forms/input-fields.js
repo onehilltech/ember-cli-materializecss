@@ -9,5 +9,9 @@ export default Ember.Controller.extend ({
     validate () {
       this.set ('errorMessage', 'This is a custom error message');
     }
+  },
+
+  emailCustomError: {
+    valueMissing: 'This field is required!!!'
   }
 });
