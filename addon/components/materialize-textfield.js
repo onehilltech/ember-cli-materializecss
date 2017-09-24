@@ -17,7 +17,7 @@ export default Ember.TextField.extend (InputFieldMixin, TextInputFieldMixin, {
     this.set ('_initValue', this.get ('value'));
   },
 
-  didUpdateAttrs () {
+  didUpdate () {
     this._super (...arguments);
     this._renderLabel ();
   },
