@@ -84,7 +84,7 @@ export default Ember.Mixin.create ({
       }
       else {
         // There is no label element, and we need to add one.
-        $label = $(`<label for="${this.elementId}">${label}</label>`).insertAfter (this.$());
+        $label = $(`<label for="${this.elementId}" class="${this.get ('labelClass')}">${label}</label>`).insertAfter (this.$());
       }
 
       // Update the state of the label.
