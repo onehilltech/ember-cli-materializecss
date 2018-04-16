@@ -1,5 +1,7 @@
 # ember-cli-materializecss
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/onehilltech/ember-cli-materializecss.svg)](https://greenkeeper.io/)
+
 This README outlines the details of collaborating on this Ember addon.
 
 ## Installation
