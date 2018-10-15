@@ -1,6 +1,10 @@
 # ember-cli-materializecss
 
-This README outlines the details of collaborating on this Ember addon.
+ember-cli addon from Materialize CSS.
+
+## Deprecation Notice
+
+This library has been deprecated. We recommend you use [ember-cli-mdc](https://github.com/onehilltech/ember-cli-mdc).
 
 ## Installation
 
